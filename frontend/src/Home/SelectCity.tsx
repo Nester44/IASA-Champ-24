@@ -9,23 +9,33 @@ import {
 import { fetchLocations } from '@/lib/api/fetchLocations'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
-import { useDebounce } from 'use-debounce'
+// import { useDebounce } from 'use-debounce'
 
-export function SelectCity() {
+type Props = {
+	setLocation: (location: string) => void
+}
+
+export function SelectCity({ setLocation }: Props) {
 	const [input, setInput] = useState('')
 
-	const [value] = useDebounce(input, 200)
+	// const [value] = useDebounce(input, 200)
 
 	const { data, isLoading, isSuccess } = useQuery({
-		queryKey: ['cities', { input: value }],
+		queryKey: ['cities', { input }],
 		queryFn: fetchLocations,
-		enabled: Boolean(value),
+		enabled: Boolean(input),
 	})
 
+	const handleSetCity = (location: string) => {
+		setLocation(location)
+		setInput('')
+	}
+
 	return (
-		<Command className='rounded-lg border shadow-md mx-auto max-w-96 mt-40'>
+		<Command className='rounded-lg border shadow-md mx-auto max-w-96 mt-4'>
 			<CommandInput
 				onChangeCapture={(e) => setInput(e.currentTarget.value)}
+				value={input}
 				placeholder='Type a city name'
 			/>
 			<CommandList>
@@ -38,7 +48,7 @@ export function SelectCity() {
 				{data?.predictions.map((prediction) => (
 					<CommandItem
 						key={prediction.description}
-						onSelect={(value) => console.log('Selected', value)}
+						onSelect={() => handleSetCity(prediction.description)}
 					>
 						{prediction.description}
 					</CommandItem>
