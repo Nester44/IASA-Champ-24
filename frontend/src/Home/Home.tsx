@@ -23,8 +23,18 @@ export function Home() {
 			<div>
 				{isSuccess && data?.length > 0 && (
 					<>
-						<p className='text-2xl'>{location}</p>
-						<div className='mx-auto my-8' style={{ height: 450 }}>
+						<p className='text-2xl my-2'>
+							{location}{' '}
+							{new Date(data[0].timestamp).toLocaleDateString(
+								'uk-UA',
+								{
+									weekday: 'long',
+									month: 'long',
+									day: 'numeric',
+								},
+							)}
+						</p>
+						<div className='mx-auto mb-8' style={{ height: 450 }}>
 							<Chart dayForecast={data} />
 						</div>
 						<Cards dayForecast={data} />
