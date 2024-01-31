@@ -1,13 +1,13 @@
-import { SelectCity } from './Home/SelectCity'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Home } from './Home/Home'
+
+const queryClient = new QueryClient()
 
 function App() {
-	console.log(import.meta.env.VITE_GOOGLE_MAPS_API_KEY)
 	return (
-		<div className='dark flex justify-center h-screen w-full items-center'>
-			<div className='max-w-80 w-full'>
-				<SelectCity />
-			</div>
-		</div>
+		<QueryClientProvider client={queryClient}>
+			<Home />
+		</QueryClientProvider>
 	)
 }
 
