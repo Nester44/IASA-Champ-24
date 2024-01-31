@@ -1,5 +1,5 @@
 import { QueryFunctionContext } from '@tanstack/react-query'
-import axios from 'axios'
+import { api } from './api'
 
 type MatchedSubstring = {
 	length: number
@@ -35,12 +35,10 @@ type PredictionsResponse = {
 export async function fetchLocations(
 	context: QueryFunctionContext<[string, { input: string }]>,
 ) {
-	const [_key, { input }] = context.queryKey
+	const [_, { input }] = context.queryKey
 
 	if (!input) return
-	const response = await axios.get<PredictionsResponse>(
-		'http://localhost:4040/locations/' + input,
-	)
+	const response = await api.get<PredictionsResponse>('locations/' + input)
 
 	return response.data
 }
