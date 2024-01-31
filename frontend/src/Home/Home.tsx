@@ -19,7 +19,7 @@ export function Home() {
 	}
 
 	return (
-		<div className='dark'>
+		<div className='dark px-12'>
 			<div className='max-h-12 relative'>
 				<SelectCity setLocation={setLocation} />
 			</div>
