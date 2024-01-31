@@ -7,16 +7,17 @@ load_dotenv()
 
 app = Flask(__name__)
 
-api_key = os.environ.get('API_NINJAS_KEY')
+ninjas_api_key = os.environ.get('API_NINJAS_KEY')
+google_maps_api_key = os.environ.get('GOOGLE_MAPS_API_KEY')
 
 
 def city_to_coordinates(city):
-    if not api_key:
-        raise ValueError('API key is missing')
+    if not ninjas_api_key:
+        raise ValueError('Ninjas API key is missing')
 
     api_url = f"https://api.api-ninjas.com/v1/geocoding?city={city}"
     headers = {
-        'X-Api-Key': api_key
+        'X-Api-Key': ninjas_api_key
     }
 
     response = requests.get(api_url, headers=headers)
@@ -30,6 +31,24 @@ def city_to_coordinates(city):
     return coordinates
 
 
+def get_locations(user_input):
+    if not google_maps_api_key:
+        raise ValueError('Google Maps API key is missing')
+
+    url = 'https://maps.googleapis.com/maps/api/place/autocomplete/json'
+    params = {
+        'input': user_input,
+        'key': google_maps_api_key,
+        'types': 'locality',
+    }
+
+    response = requests.get(url, params=params)
+    response.raise_for_status()
+
+    data = response.json()
+    return data
+
+
 @app.route('/forecast', methods=['GET'])
 def get_coordinates_route():
     city_name = request.args.get('city')
@@ -40,6 +59,15 @@ def get_coordinates_route():
     try:
         coordinates = city_to_coordinates(city_name)
         return jsonify(coordinates)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/locations/<user_input>', methods=['GET'])
+def get_locations_route(user_input):
+    try:
+        locations = get_locations(user_input)
+        return jsonify(locations)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
