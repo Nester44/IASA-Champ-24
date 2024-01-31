@@ -20,8 +20,17 @@ export const Chart = ({ dayForecast }: Props) => {
 			hour: '2-digit',
 			minute: '2-digit',
 		}),
+		precipitation: forecast.precipitation_probability_mean.toFixed(0),
 		temperature: forecast.currentTemperature.toFixed(0),
 	}))
+
+	const minTemperature = Math.min(
+		...mappedData.map((data) => Number(data.temperature)),
+	)
+
+	const maxTemperature = Math.max(
+		...mappedData.map((data) => Number(data.temperature)),
+	)
 
 	return (
 		<ResponsiveContainer width='100%' height='100%'>
@@ -36,7 +45,7 @@ export const Chart = ({ dayForecast }: Props) => {
 			>
 				<CartesianGrid strokeDasharray='3 3' />
 				<XAxis dataKey='time' />
-				<YAxis domain={[-10, 40]} />
+				<YAxis domain={[minTemperature - 5, maxTemperature + 5]} />
 				<Tooltip labelStyle={{ color: 'black' }} />
 				<Legend />
 				<Line
