@@ -7,39 +7,34 @@ load_dotenv()
 
 app = Flask(__name__)
 
-ninjas_api_key = os.environ.get('API_NINJAS_KEY')
-google_maps_api_key = os.environ.get('GOOGLE_MAPS_API_KEY')
+ninjas_api_key = os.environ.get("API_NINJAS_KEY")
+google_maps_api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
+
+if not ninjas_api_key:
+    raise ValueError("Ninjas API key is missing")
+
+if not ninjas_api_key:
+    raise ValueError("Ninjas API key is missing")
 
 
 def city_to_coordinates(city):
-    if not ninjas_api_key:
-        raise ValueError('Ninjas API key is missing')
-
     api_url = f"https://api.api-ninjas.com/v1/geocoding?city={city}"
-    headers = {
-        'X-Api-Key': ninjas_api_key
-    }
+    headers = {"X-Api-Key": ninjas_api_key}
 
     response = requests.get(api_url, headers=headers)
     response.raise_for_status()
 
     data = response.json()[0]
-    coordinates = {
-        "latitude": data["latitude"],
-        "longitude": data["longitude"]
-    }
+    coordinates = {"latitude": data["latitude"], "longitude": data["longitude"]}
     return coordinates
 
 
 def get_locations(user_input):
-    if not google_maps_api_key:
-        raise ValueError('Google Maps API key is missing')
-
-    url = 'https://maps.googleapis.com/maps/api/place/autocomplete/json'
+    url = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
     params = {
-        'input': user_input,
-        'key': google_maps_api_key,
-        'types': 'locality',
+        "input": user_input,
+        "key": google_maps_api_key,
+        "types": "locality",
     }
 
     response = requests.get(url, params=params)
@@ -49,28 +44,28 @@ def get_locations(user_input):
     return data
 
 
-@app.route('/forecast', methods=['GET'])
+@app.route("/forecast", methods=["GET"])
 def get_coordinates_route():
-    city_name = request.args.get('city')
+    city_name = request.args.get("city")
 
     if not city_name:
-        return jsonify({'error': 'Missing city parameter'}), 400
+        return jsonify({"error": "Missing city parameter"}), 400
 
     try:
         coordinates = city_to_coordinates(city_name)
         return jsonify(coordinates)
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return jsonify({"error": str(e)}), 500
 
 
-@app.route('/locations/<user_input>', methods=['GET'])
+@app.route("/locations/<user_input>", methods=["GET"])
 def get_locations_route(user_input):
     try:
         locations = get_locations(user_input)
         return jsonify(locations)
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return jsonify({"error": str(e)}), 500
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
