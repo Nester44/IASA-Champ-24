@@ -19,9 +19,11 @@ export function Home() {
 			<div className='max-h-11 z-10 relative'>
 				<SelectCity setLocation={setLocation} />
 			</div>
+
 			<div>
 				{isSuccess && data?.length > 0 && (
 					<>
+						<p className='text-2xl'>{location}</p>
 						<div className='mx-auto my-8' style={{ height: 450 }}>
 							<Chart dayForecast={data} />
 						</div>

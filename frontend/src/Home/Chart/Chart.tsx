@@ -26,8 +26,6 @@ export const Chart = ({ dayForecast }: Props) => {
 	return (
 		<ResponsiveContainer width='100%' height='100%'>
 			<LineChart
-				width={500}
-				height={600}
 				data={mappedData}
 				margin={{
 					top: 5,
