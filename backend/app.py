@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+
 from dotenv import load_dotenv
 import requests
 import os
@@ -6,6 +8,8 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
+
 
 ninjas_api_key = os.environ.get("API_NINJAS_KEY")
 google_maps_api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
@@ -44,16 +48,21 @@ def get_locations(user_input):
     return data
 
 
-@app.route("/forecast", methods=["GET"])
-def get_coordinates_route():
-    city_name = request.args.get("city")
-
-    if not city_name:
+@app.route("/forecast/<city>", methods=["GET"])
+def get_coordinates_route(city):
+    if not city:
         return jsonify({"error": "Missing city parameter"}), 400
 
     try:
-        coordinates = city_to_coordinates(city_name)
-        return jsonify(coordinates)
+        coordinates = city_to_coordinates(city)
+        print(coordinates)
+
+        # read from tmp_weather.json and send its content
+        with open("tmp_weather.json", "r") as f:
+            weather_data = f.read()
+
+            return weather_data
+
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
