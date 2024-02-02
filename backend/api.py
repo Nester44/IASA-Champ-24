@@ -57,25 +57,6 @@ def get_weather_history(lat, lng, start_date, end_date):
     return hourly_dataframe
 
 
-def map_result(forecast):
-    result = []
-    for timestamp in forecast["temperature_2m"]["ds"]:
-        row = {
-            "date": timestamp,
-            "temperature_2m": forecast["temperature_2m"]
-            .loc[forecast["temperature_2m"]["ds"] == timestamp, "yhat"]
-            .values[0],
-            "precipitation": forecast["precipitation"]
-            .loc[forecast["precipitation"]["ds"] == timestamp, "yhat"]
-            .values[0],
-            "relative_humidity_2m": forecast["relative_humidity_2m"]
-            .loc[forecast["relative_humidity_2m"]["ds"] == timestamp, "yhat"]
-            .values[0],
-        }
-        result.append(row)
-        return result
-
-
 def get_histories_and_save(cities):
     for city in cities:
         coordinates = get_coordinates(city)

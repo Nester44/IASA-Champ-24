@@ -20,8 +20,8 @@ export const Chart = ({ dayForecast }: Props) => {
 			hour: '2-digit',
 			minute: '2-digit',
 		}),
-		precipitation: forecast.precipitation_probability_mean.toFixed(0),
-		temperature: forecast.currentTemperature.toFixed(0),
+		precipitation: forecast.precipitation.toFixed(0),
+		temperature: forecast.temperature.toFixed(0),
 	}))
 
 	const minTemperature = Math.min(

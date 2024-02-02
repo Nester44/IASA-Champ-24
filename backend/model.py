@@ -81,6 +81,13 @@ def predict_weather(city):
     return forecasts
 
 
+normal_indicators = {
+    "temperature_2m": "temperature",
+    "relative_humidity_2m": "humidity",
+    "precipitation": "precipitation",
+}
+
+
 def map_forecast(forecasts):
     mapped_forecast = {}
     for indicator, forecast in forecasts.items():
@@ -89,5 +96,5 @@ def map_forecast(forecasts):
             yhat = forecast["yhat"][i]
             if timestamp not in mapped_forecast:
                 mapped_forecast[timestamp] = {"timestamp": timestamp}
-            mapped_forecast[timestamp][indicator] = yhat
+            mapped_forecast[timestamp][normal_indicators[indicator]] = yhat
     return list(mapped_forecast.values())[-24:]

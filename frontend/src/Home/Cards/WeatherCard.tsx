@@ -12,18 +12,12 @@ type Props = {
 }
 
 const WeatherCard = ({ forecast }: Props) => {
-	const {
-		timestamp,
-		highestTemperature,
-		lowestTemperature,
-		precipitation_probability_mean,
-		currentTemperature,
-	} = forecast
+	const { timestamp, humidity, precipitation, temperature } = forecast
 
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle>{currentTemperature.toFixed(0)}°</CardTitle>
+				<CardTitle>{temperature.toFixed(0)}°</CardTitle>
 				<CardDescription>
 					{new Date(timestamp).toLocaleTimeString('uk-ua', {
 						hour: '2-digit',
@@ -32,16 +26,16 @@ const WeatherCard = ({ forecast }: Props) => {
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<p className='text-sm'>
+				{/* <p className='text-sm'>
 					H:{highestTemperature.toFixed(0)}° L:
 					{lowestTemperature.toFixed(0)}°
-				</p>
+				</p> */}
 
-				<p>Precipation: {precipitation_probability_mean.toFixed(0)}%</p>
+				<p>Precipation: {precipitation.toFixed(0)}%</p>
+				<p>Humidity: {humidity.toFixed(0)}%</p>
 			</CardContent>
 		</Card>
 	)
 }
-//celsium symbol
 
 export default WeatherCard

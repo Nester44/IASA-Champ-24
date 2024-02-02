@@ -3,12 +3,9 @@ import { api } from './api'
 
 export type WeatherData = {
 	timestamp: string
-	currentTemperature: number
-	lowestTemperature: number
-	highestTemperature: number
-	precipitation_probability_max: number
-	precipitation_probability_min: number
-	precipitation_probability_mean: number
+	humidity: number
+	precipitation: number
+	temperature: number
 }
 
 export async function fetchWeather(
