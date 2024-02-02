@@ -9,5 +9,17 @@ cors = CORS(app)
 app.config["CORS_HEADERS"] = "Content-Type"
 
 
+@app.route("/locations/<query>", methods=["GET"])
+@cross_origin()
+def locations(query):
+    return jsonify(cities)
+
+
+@app.route("/forecast/<city>", methods=["GET"])
+@cross_origin()
+def forecast(city):
+    return jsonify(get_coordinates(city))
+
+
 if __name__ == "__main__":
     app.run(debug=True)
