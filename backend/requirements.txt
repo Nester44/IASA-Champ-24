@@ -1,4 +1,8 @@
 Flask==3.0.1
-flask_cors==4.0.0
+Flask_Cors==4.0.0
+openmeteo_requests==1.1.0
+pandas==2.2.0
+prophet==1.1.5
 python-dotenv==1.0.1
-Requests==2.31.0
+requests_cache==1.1.1
+retry_requests==2.0.0
