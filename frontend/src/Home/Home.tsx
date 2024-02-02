@@ -21,23 +21,28 @@ export function Home() {
 			</div>
 
 			<div>
-				{isSuccess && data?.length > 0 && (
+				{isSuccess && data?.hourlyForecast.length > 0 && (
 					<>
 						<p className='text-2xl my-2'>
 							{location}{' '}
-							{new Date(data[0].timestamp).toLocaleDateString(
-								'uk-UA',
-								{
-									weekday: 'long',
-									month: 'long',
-									day: 'numeric',
-								},
-							)}
+							{new Date(
+								data.hourlyForecast[0].timestamp,
+							).toLocaleDateString('uk-UA', {
+								weekday: 'long',
+								month: 'long',
+								day: 'numeric',
+							})}
 						</p>
+
+						<p className='text-5xl mb-2 text-gray-500'>
+							H:{data.maxTemperature.toFixed(0)}° &nbsp;L:
+							{data.minTemperature.toFixed(0)}°
+						</p>
+
 						<div className='mx-auto mb-8' style={{ height: 450 }}>
-							<Chart dayForecast={data} />
+							<Chart dayForecast={data.hourlyForecast} />
 						</div>
-						<Cards dayForecast={data} />
+						<Cards dayForecast={data.hourlyForecast} />
 					</>
 				)}
 			</div>

@@ -1,4 +1,4 @@
-import { WeatherData } from '@/lib/api/fetchWeather'
+import { HourlyForecast } from '@/lib/api/fetchWeather'
 import {
 	CartesianGrid,
 	Legend,
@@ -11,7 +11,7 @@ import {
 } from 'recharts'
 
 type Props = {
-	dayForecast: WeatherData[]
+	dayForecast: HourlyForecast[]
 }
 
 export const Chart = ({ dayForecast }: Props) => {

@@ -1,9 +1,9 @@
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
-import { WeatherData } from '@/lib/api/fetchWeather'
+import { HourlyForecast } from '@/lib/api/fetchWeather'
 import WeatherCard from './WeatherCard'
 
 type Props = {
-	dayForecast: WeatherData[]
+	dayForecast: HourlyForecast[]
 }
 
 export const Cards = ({ dayForecast }: Props) => {

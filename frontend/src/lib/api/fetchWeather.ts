@@ -1,11 +1,17 @@
 import { QueryFunctionContext } from '@tanstack/react-query'
 import { api } from './api'
 
-export type WeatherData = {
+export type HourlyForecast = {
 	timestamp: string
 	humidity: number
 	precipitation: number
 	temperature: number
+}
+
+export type WeatherData = {
+	minTemperature: number
+	maxTemperature: number
+	hourlyForecast: HourlyForecast[]
 }
 
 export async function fetchWeather(
@@ -13,7 +19,7 @@ export async function fetchWeather(
 ) {
 	const [_, { location }] = context.queryKey
 
-	const response = await api.get<WeatherData[]>('forecast/' + location)
+	const response = await api.get<WeatherData>('forecast/' + location)
 
 	return response.data
 }

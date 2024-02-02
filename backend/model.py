@@ -97,4 +97,11 @@ def map_forecast(forecasts):
             if timestamp not in mapped_forecast:
                 mapped_forecast[timestamp] = {"timestamp": timestamp}
             mapped_forecast[timestamp][normal_indicators[indicator]] = yhat
-    return list(mapped_forecast.values())[-24:]
+    hourlyForecast = list(mapped_forecast.values())[-24:]
+    min_temp = min([x["temperature"] for x in hourlyForecast])
+    max_temp = max([x["temperature"] for x in hourlyForecast])
+    return {
+        "hourlyForecast": hourlyForecast,
+        "minTemperature": min_temp,
+        "maxTemperature": max_temp,
+    }
