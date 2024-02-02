@@ -2,13 +2,15 @@ import { fetchWeather } from '@/lib/api/fetchWeather'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { Cards } from './Cards'
+import CardsSkeleton from './Cards/CardsSkeleton'
 import { Chart } from './Chart'
+import ChartSkeleton from './Chart/ChartSkeleton'
 import { SelectCity } from './SelectCity'
 
 export function Home() {
 	const [location, setLocation] = useState('')
 
-	const { data, isSuccess } = useQuery({
+	const { data, isSuccess, isLoading } = useQuery({
 		queryKey: ['forecast', { location }],
 		queryFn: fetchWeather,
 		enabled: Boolean(location),
@@ -19,6 +21,13 @@ export function Home() {
 			<div className='max-h-11 z-10 relative'>
 				<SelectCity setLocation={setLocation} />
 			</div>
+
+			{isLoading && (
+				<>
+					<ChartSkeleton />
+					<CardsSkeleton />
+				</>
+			)}
 
 			<div>
 				{isSuccess && data?.hourlyForecast.length > 0 && (
@@ -43,6 +52,7 @@ export function Home() {
 						<div className='mx-auto mb-8' style={{ height: 450 }}>
 							<Chart dayForecast={data.hourlyForecast} />
 						</div>
+
 						<Cards dayForecast={data.hourlyForecast} />
 					</>
 				)}

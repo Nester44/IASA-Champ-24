@@ -26,11 +26,6 @@ const WeatherCard = ({ forecast }: Props) => {
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
-				{/* <p className='text-sm'>
-					H:{highestTemperature.toFixed(0)}° L:
-					{lowestTemperature.toFixed(0)}°
-				</p> */}
-
 				<p>Precipation: {precipitation.toFixed(0)}%</p>
 				<p>Humidity: {humidity.toFixed(0)}%</p>
 			</CardContent>
