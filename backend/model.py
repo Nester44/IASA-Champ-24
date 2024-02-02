@@ -2,7 +2,8 @@ import pandas as pd
 import multiprocessing
 from prophet import Prophet
 from prophet.serialize import model_to_json, model_from_json
-from constants import indicators
+from constants import indicators, dataset_last_info
+from datetime import datetime, timedelta
 
 
 def train_prophet_model(dataframe, target_column):
@@ -19,25 +20,6 @@ def train_prophet_model(dataframe, target_column):
 def preprocess(dataset):
     dataset.dropna()
     return dataset
-
-
-def predict_weather(dataframe):
-    future_df = pd.DataFrame()
-    future_dates = pd.date_range(start=dataframe["date"].iloc[-1], periods=72, freq="H")
-    future_df["ds"] = future_dates
-
-    target_columns = ["temperature_2m", "precipitation", "relative_humidity_2m"]
-    models = {}
-    for column in target_columns:
-        models[column] = train_prophet_model(dataframe, column)
-
-    forecasts = {}
-    for column, model in models.items():
-        future = model.make_future_dataframe(periods=72, freq="H")
-        forecast = model.predict(future)
-        forecasts[column] = forecast
-
-    return forecasts
 
 
 def train_model_from_csv(city):
@@ -67,3 +49,45 @@ def train_models_from_csv(cities):
         for p in processes:
             p.join()
         print("All models are trained and saved to disk.")
+
+
+def load_model(city, indicator):
+    with open(f"models/{city}_{indicator}.json", "r") as f:
+        m = model_from_json(f.read())
+        return m
+
+
+dataset_last_date = datetime.strptime(dataset_last_info, "%Y.%m.%d")
+tomorrow = datetime.today().replace(
+    hour=0, minute=0, second=0, microsecond=0
+) + timedelta(days=2)
+# Calculate the difference in hours
+periods = int((tomorrow - dataset_last_date).total_seconds() / 3600)
+
+
+def predict_weather(city):
+    models = {}
+    for indicator in indicators:
+        models[indicator] = load_model(city, indicator)
+
+    forecasts = {}
+    for indicator, model in models.items():
+        future = model.make_future_dataframe(
+            periods=periods, freq="h", include_history=False
+        )
+        forecast = model.predict(future)
+        forecasts[indicator] = forecast
+
+    return forecasts
+
+
+def map_forecast(forecasts):
+    mapped_forecast = {}
+    for indicator, forecast in forecasts.items():
+        for i in range(len(forecast)):
+            timestamp = forecast["ds"][i]
+            yhat = forecast["yhat"][i]
+            if timestamp not in mapped_forecast:
+                mapped_forecast[timestamp] = {"timestamp": timestamp}
+            mapped_forecast[timestamp][indicator] = yhat
+    return list(mapped_forecast.values())[-24:]
