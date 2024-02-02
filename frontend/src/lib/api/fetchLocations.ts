@@ -7,7 +7,7 @@ export async function fetchLocations(
 	const [_, { input }] = context.queryKey
 
 	if (!input) return
-	const response = await api.get<string[]>('locations/' + input)
+	const response = await api.get<string[]>('locations')
 
 	return response.data
 }
