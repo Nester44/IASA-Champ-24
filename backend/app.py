@@ -9,9 +9,9 @@ cors = CORS(app)
 app.config["CORS_HEADERS"] = "Content-Type"
 
 
-@app.route("/locations/<query>", methods=["GET"])
+@app.route("/locations", methods=["GET"])
 @cross_origin()
-def locations_handler(query):
+def locations_handler():
     return jsonify(cities)
 
 
