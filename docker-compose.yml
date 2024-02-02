@@ -17,7 +17,10 @@ services:
     depends_on:
       - backend
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      args:
+        - GITHUB_TOKEN=${GITHUB_TOKEN}
     command: flask run --host 0.0.0.0
     env_file:
       - .env
