@@ -6,7 +6,10 @@
     "highestTemperature": 12,
     "precipitation_probability_max": 30,
     "precipitation_probability_min": 10,
-    "precipitation_probability_mean": 20
+    "precipitation_probability_mean": 20,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 01:00",
@@ -15,7 +18,10 @@
     "highestTemperature": 12.5,
     "precipitation_probability_max": 35,
     "precipitation_probability_min": 15,
-    "precipitation_probability_mean": 25
+    "precipitation_probability_mean": 25,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 02:00",
@@ -24,7 +30,10 @@
     "highestTemperature": 13,
     "precipitation_probability_max": 40,
     "precipitation_probability_min": 20,
-    "precipitation_probability_mean": 30
+    "precipitation_probability_mean": 30,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 03:00",
@@ -33,7 +42,10 @@
     "highestTemperature": 13.5,
     "precipitation_probability_max": 45,
     "precipitation_probability_min": 25,
-    "precipitation_probability_mean": 35
+    "precipitation_probability_mean": 35,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 04:00",
@@ -42,7 +54,10 @@
     "highestTemperature": 14,
     "precipitation_probability_max": 50,
     "precipitation_probability_min": 30,
-    "precipitation_probability_mean": 40
+    "precipitation_probability_mean": 40,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 05:00",
@@ -51,7 +66,10 @@
     "highestTemperature": 14.5,
     "precipitation_probability_max": 55,
     "precipitation_probability_min": 35,
-    "precipitation_probability_mean": 45
+    "precipitation_probability_mean": 45,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 06:00",
@@ -60,7 +78,10 @@
     "highestTemperature": 15,
     "precipitation_probability_max": 60,
     "precipitation_probability_min": 40,
-    "precipitation_probability_mean": 50
+    "precipitation_probability_mean": 50,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 07:00",
@@ -69,7 +90,10 @@
     "highestTemperature": 15.5,
     "precipitation_probability_max": 65,
     "precipitation_probability_min": 45,
-    "precipitation_probability_mean": 55
+    "precipitation_probability_mean": 55,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 08:00",
@@ -78,7 +102,10 @@
     "highestTemperature": 16,
     "precipitation_probability_max": 70,
     "precipitation_probability_min": 50,
-    "precipitation_probability_mean": 60
+    "precipitation_probability_mean": 60,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 09:00",
@@ -87,7 +114,10 @@
     "highestTemperature": 16.5,
     "precipitation_probability_max": 75,
     "precipitation_probability_min": 55,
-    "precipitation_probability_mean": 65
+    "precipitation_probability_mean": 65,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 10:00",
@@ -96,7 +126,10 @@
     "highestTemperature": 17,
     "precipitation_probability_max": 80,
     "precipitation_probability_min": 60,
-    "precipitation_probability_mean": 70
+    "precipitation_probability_mean": 70,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 11:00",
@@ -105,7 +138,10 @@
     "highestTemperature": 17.5,
     "precipitation_probability_max": 85,
     "precipitation_probability_min": 65,
-    "precipitation_probability_mean": 75
+    "precipitation_probability_mean": 75,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 12:00",
@@ -114,7 +150,10 @@
     "highestTemperature": 18,
     "precipitation_probability_max": 90,
     "precipitation_probability_min": 70,
-    "precipitation_probability_mean": 80
+    "precipitation_probability_mean": 80,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 13:00",
@@ -123,7 +162,10 @@
     "highestTemperature": 18.5,
     "precipitation_probability_max": 95,
     "precipitation_probability_min": 75,
-    "precipitation_probability_mean": 85
+    "precipitation_probability_mean": 85,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 14:00",
@@ -132,7 +174,10 @@
     "highestTemperature": 19,
     "precipitation_probability_max": 100,
     "precipitation_probability_min": 80,
-    "precipitation_probability_mean": 90
+    "precipitation_probability_mean": 90,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 15:00",
@@ -141,7 +186,10 @@
     "highestTemperature": 19.5,
     "precipitation_probability_max": 100,
     "precipitation_probability_min": 85,
-    "precipitation_probability_mean": 95
+    "precipitation_probability_mean": 95,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 16:00",
@@ -150,7 +198,10 @@
     "highestTemperature": 20,
     "precipitation_probability_max": 100,
     "precipitation_probability_min": 90,
-    "precipitation_probability_mean": 95
+    "precipitation_probability_mean": 95,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 17:00",
@@ -159,7 +210,10 @@
     "highestTemperature": 20.5,
     "precipitation_probability_max": 100,
     "precipitation_probability_min": 95,
-    "precipitation_probability_mean": 97
+    "precipitation_probability_mean": 97,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 18:00",
@@ -168,7 +222,10 @@
     "highestTemperature": 21,
     "precipitation_probability_max": 100,
     "precipitation_probability_min": 97,
-    "precipitation_probability_mean": 98
+    "precipitation_probability_mean": 98,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 19:00",
@@ -177,7 +234,10 @@
     "highestTemperature": 21.5,
     "precipitation_probability_max": 100,
     "precipitation_probability_min": 98,
-    "precipitation_probability_mean": 99
+    "precipitation_probability_mean": 99,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 20:00",
@@ -186,7 +246,10 @@
     "highestTemperature": 22,
     "precipitation_probability_max": 100,
     "precipitation_probability_min": 99,
-    "precipitation_probability_mean": 100
+    "precipitation_probability_mean": 100,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 21:00",
@@ -195,7 +258,10 @@
     "highestTemperature": 22.5,
     "precipitation_probability_max": 100,
     "precipitation_probability_min": 100,
-    "precipitation_probability_mean": 100
+    "precipitation_probability_mean": 100,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 22:00",
@@ -204,7 +270,10 @@
     "highestTemperature": 23,
     "precipitation_probability_max": 100,
     "precipitation_probability_min": 100,
-    "precipitation_probability_mean": 100
+    "precipitation_probability_mean": 100,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   },
   {
     "timestamp": "2024-02-01 23:00",
@@ -213,6 +282,9 @@
     "highestTemperature": 23.5,
     "precipitation_probability_max": 100,
     "precipitation_probability_min": 100,
-    "precipitation_probability_mean": 100
+    "precipitation_probability_mean": 100,
+    "humidity_max": 5,
+    "humidity_min": 3,
+    "humidity_mean": 4
   }
 ]

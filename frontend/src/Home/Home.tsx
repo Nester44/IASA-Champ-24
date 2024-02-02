@@ -4,9 +4,27 @@ import { useState } from 'react'
 import { Cards } from './Cards'
 import { Chart } from './Chart'
 import { SelectCity } from './SelectCity'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs.tsx'
+
+function TabController(props: {chartKey: string, onTabChange: (value: string) => void}) {
+	return (
+		<Tabs value={props.chartKey} onValueChange={props.onTabChange} defaultValue="temperature" className="py-2">
+			<TabsList>
+				<TabsTrigger value="temperature">Temperature</TabsTrigger>
+				<TabsTrigger value="precipitation">Precipitation</TabsTrigger>
+				<TabsTrigger value="humidity">Humidity</TabsTrigger>
+			</TabsList>
+		</Tabs>
+	);
+}
 
 export function Home() {
 	const [location, setLocation] = useState('')
+	const [chartKey, setChartKey] = useState('temperature')
+
+	const onTabChange = (value: string) => {
+		setChartKey(value);
+	};
 
 	const { data, isSuccess } = useQuery({
 		queryKey: ['forecast', { location }],
@@ -34,8 +52,9 @@ export function Home() {
 								},
 							)}
 						</p>
+						<TabController chartKey={chartKey} onTabChange={onTabChange}></TabController>
 						<div className='mx-auto mb-8' style={{ height: 450 }}>
-							<Chart dayForecast={data} />
+							<Chart dayForecast={data} chartKey={chartKey}/>
 						</div>
 						<Cards dayForecast={data} />
 					</>

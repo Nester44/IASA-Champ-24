@@ -18,6 +18,7 @@ const WeatherCard = ({ forecast }: Props) => {
 		lowestTemperature,
 		precipitation_probability_mean,
 		currentTemperature,
+		humidity_mean,
 	} = forecast
 
 	return (
@@ -38,6 +39,7 @@ const WeatherCard = ({ forecast }: Props) => {
 				</p>
 
 				<p>Precipation: {precipitation_probability_mean.toFixed(0)}%</p>
+				<p>Humidity: {humidity_mean.toFixed(0)}%</p>
 			</CardContent>
 		</Card>
 	)

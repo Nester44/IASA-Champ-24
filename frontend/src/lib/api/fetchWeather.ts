@@ -9,6 +9,9 @@ export type WeatherData = {
 	precipitation_probability_max: number
 	precipitation_probability_min: number
 	precipitation_probability_mean: number
+	humidity_max: number
+	humidity_min: number
+	humidity_mean: number
 }
 
 export async function fetchWeather(
