@@ -5,6 +5,8 @@ load_dotenv()
 
 indicators = ["temperature_2m", "relative_humidity_2m", "precipitation"]
 
-cities = os.getenv("CITIES").split(", ")
+cities = list(map(str.lower, os.getenv("CITIES").split(", ")))
+
+print(cities)
 
 dataset_last_info = "2024.01.31"
