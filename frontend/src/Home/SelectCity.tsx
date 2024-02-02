@@ -41,16 +41,14 @@ export function SelectCity({ setLocation }: Props) {
 			<CommandList>
 				{isLoading ? <CommandLoading>Hang on...</CommandLoading> : null}
 
-				{isSuccess && data?.length === 0 ? (
-					<CommandEmpty />
-				) : null}
+				{isSuccess && data?.length === 0 ? <CommandEmpty /> : null}
 
 				{data?.map((city) => (
 					<CommandItem
 						key={city}
 						onSelect={() => handleSetCity(city)}
 					>
-						{city}
+						{city.at(0)?.toUpperCase() + city.slice(1)}
 					</CommandItem>
 				))}
 			</CommandList>

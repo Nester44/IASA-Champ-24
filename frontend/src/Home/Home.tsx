@@ -24,7 +24,8 @@ export function Home() {
 				{isSuccess && data?.hourlyForecast.length > 0 && (
 					<>
 						<p className='text-2xl my-2'>
-							{location}{' '}
+							{location.at(0)?.toUpperCase() + location.slice(1)}{' '}
+							&nbsp;
 							{new Date(
 								data.hourlyForecast[0].timestamp,
 							).toLocaleDateString('uk-UA', {
