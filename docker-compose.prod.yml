@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+      network: host
+    command: serve -s build -l 5173
+    env_file:
+      - .env.prod
+    depends_on:
+      - backend
+  backend:
+    build:
+      context: ./backend
+      network: host
+    command: flask run --host 0.0.0.0
+    env_file:
+      - .env.prod
+    stop_signal: SIGINT
+  nginx:
+    build: ./nginx
+    container_name: dev-nginx
+    ports:
+      - "8080:80"
+    restart: always
+    depends_on:
+      - frontend
+      - backend
