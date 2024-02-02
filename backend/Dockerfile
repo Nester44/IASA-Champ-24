@@ -10,6 +10,6 @@ COPY . /app
 
 ARG GITHUB_TOKEN
 
-RUN curl -vLJO -H "Authorization: token ${GITHUB_TOKEN}" -H "Accept: application/octet-stream" "https://api.github.com/repos/Nester44/IASA-Champ-24/releases/assets/149465525"
+RUN curl -vLJO "https://github.com/Nester44/IASA-Champ-24/releases/download/v1.0.0-models/models.zip"
 RUN unzip models.zip
 RUN rm models.zip
