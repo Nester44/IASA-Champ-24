@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 from dotenv import load_dotenv
 import requests
@@ -8,7 +8,8 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+cors = CORS(app)
+app.config["CORS_HEADERS"] = "Content-Type"
 
 
 ninjas_api_key = os.environ.get("API_NINJAS_KEY")
@@ -49,6 +50,7 @@ def get_locations(user_input):
 
 
 @app.route("/forecast/<city>", methods=["GET"])
+@cross_origin()
 def get_coordinates_route(city):
     if not city:
         return jsonify({"error": "Missing city parameter"}), 400
@@ -68,6 +70,7 @@ def get_coordinates_route(city):
 
 
 @app.route("/locations/<user_input>", methods=["GET"])
+@cross_origin()
 def get_locations_route(user_input):
     try:
         locations = get_locations(user_input)
