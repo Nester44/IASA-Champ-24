@@ -5,10 +5,10 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
-import { WeatherData } from '@/lib/api/fetchWeather'
+import { HourlyForecast } from '@/lib/api/fetchWeather'
 
 type Props = {
-	forecast: WeatherData
+	forecast: HourlyForecast
 }
 
 const WeatherCard = ({ forecast }: Props) => {
